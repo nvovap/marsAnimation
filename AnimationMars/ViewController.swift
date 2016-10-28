@@ -38,6 +38,8 @@ class ViewController: UIViewController {
         }
         
         
+       
+        
         
         
         
@@ -92,7 +94,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func stopPress() {
-        animator.stopAnimation(true)
+        animator.stopAnimation(false)
     }
     
     @IBAction func stepRightPress() {
@@ -124,14 +126,21 @@ class ViewController: UIViewController {
             
            // startAnimation.setTitle("Continгу animation", for: UIControlState.normal)
             
-        } else {
-        
+        } else if animator.isInterruptible {
+            
+          //  animator.continueAnimation(withTimingParameters: UITimingCurveProvider, durationFactor: <#T##CGFloat#>)
+            
             animator.addAnimations {
                 self.marsView.center = CGPoint(x: 160, y: 444)
                 self.marsView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
             }
             
             animator.startAnimation()
+           
+            
+        } else {
+        
+            
             
            // startAnimation.setTitle("Pause animation", for: UIControlState.normal)
             
